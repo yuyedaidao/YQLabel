@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "551E19A31FCC50B300C7F046"
-               BuildableName = "YQLabelFramework.framework"
+               BuildableName = "YQLabel.framework"
                BlueprintName = "YQLabelFramework"
                ReferencedContainer = "container:YQLabel.xcodeproj">
             </BuildableReference>
@@ -48,7 +48,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "551E19A31FCC50B300C7F046"
-            BuildableName = "YQLabelFramework.framework"
+            BuildableName = "YQLabel.framework"
             BlueprintName = "YQLabelFramework"
             ReferencedContainer = "container:YQLabel.xcodeproj">
          </BuildableReference>
@@ -66,7 +66,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "551E19A31FCC50B300C7F046"
-            BuildableName = "YQLabelFramework.framework"
+            BuildableName = "YQLabel.framework"
             BlueprintName = "YQLabelFramework"
             ReferencedContainer = "container:YQLabel.xcodeproj">
          </BuildableReference>
