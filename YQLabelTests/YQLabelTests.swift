@@ -33,4 +33,24 @@ class YQLabelTests: XCTestCase {
         }
     }
     
+    func testReduce() {
+        let array = [0,1]
+        let r = array.reduce(Int()) { (result, item) -> Int in
+//            result += item
+            return result
+        }
+        XCTAssertEqual(r, 0)
+    }
+    
+    func testStringLength() {
+        XCTAssertEqual("a".utf8.count, 1)
+        XCTAssertEqual("我".utf8.count, 3)
+        XCTAssertEqual("我们".utf8.count, 6)
+        XCTAssertEqual("我".count, 1)
+        XCTAssertEqual("我".utf16.count, 1)
+    }
+    
+    func testHash() {
+        XCTAssertNotEqual(CGFloat(0.3).hashValue, 0)
+    }
 }

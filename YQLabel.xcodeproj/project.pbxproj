@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551E19A81FCC50B300C7F046 /* YQLabelFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 551E19A61FCC50B300C7F046 /* YQLabelFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		551E19AB1FCC50B300C7F046 /* YQLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551E19A41FCC50B300C7F046 /* YQLabel.framework */; };
+		551E19AC1FCC50B300C7F046 /* YQLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551E19A41FCC50B300C7F046 /* YQLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		551E19B11FCC52CA00C7F046 /* YQLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8F2531FCAE02200899EA9 /* YQLabel.swift */; };
 		55E8F2251FCADF9700899EA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8F2241FCADF9700899EA9 /* AppDelegate.swift */; };
 		55E8F2271FCADF9700899EA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8F2261FCADF9700899EA9 /* ViewController.swift */; };
 		55E8F22A1FCADF9700899EA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E8F2281FCADF9700899EA9 /* Main.storyboard */; };
@@ -14,9 +18,17 @@
 		55E8F22F1FCADF9700899EA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E8F22D1FCADF9700899EA9 /* LaunchScreen.storyboard */; };
 		55E8F23A1FCADF9800899EA9 /* YQLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8F2391FCADF9800899EA9 /* YQLabelTests.swift */; };
 		55E8F2451FCADF9800899EA9 /* YQLabelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8F2441FCADF9800899EA9 /* YQLabelUITests.swift */; };
+		55E8F2541FCAE02200899EA9 /* YQLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8F2531FCAE02200899EA9 /* YQLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		551E19A91FCC50B300C7F046 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55E8F2191FCADF9700899EA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 551E19A31FCC50B300C7F046;
+			remoteInfo = YQLabelFramework;
+		};
 		55E8F2361FCADF9800899EA9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55E8F2191FCADF9700899EA9 /* Project object */;
@@ -33,7 +45,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		551E19B01FCC50B300C7F046 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				551E19AC1FCC50B300C7F046 /* YQLabel.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		551E19A41FCC50B300C7F046 /* YQLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YQLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		551E19A61FCC50B300C7F046 /* YQLabelFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YQLabelFramework.h; sourceTree = "<group>"; };
+		551E19A71FCC50B300C7F046 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E8F2211FCADF9700899EA9 /* YQLabel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YQLabel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E8F2241FCADF9700899EA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55E8F2261FCADF9700899EA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,13 +76,22 @@
 		55E8F2401FCADF9800899EA9 /* YQLabelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YQLabelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E8F2441FCADF9800899EA9 /* YQLabelUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQLabelUITests.swift; sourceTree = "<group>"; };
 		55E8F2461FCADF9800899EA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		55E8F2531FCAE02200899EA9 /* YQLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YQLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		551E19A01FCC50B300C7F046 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55E8F21E1FCADF9700899EA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551E19AB1FCC50B300C7F046 /* YQLabel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,12 +112,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		551E19A51FCC50B300C7F046 /* YQLabelFramework */ = {
+			isa = PBXGroup;
+			children = (
+				551E19A61FCC50B300C7F046 /* YQLabelFramework.h */,
+				551E19A71FCC50B300C7F046 /* Info.plist */,
+			);
+			path = YQLabelFramework;
+			sourceTree = "<group>";
+		};
 		55E8F2181FCADF9700899EA9 = {
 			isa = PBXGroup;
 			children = (
+				55E8F2521FCADFE700899EA9 /* Classes */,
 				55E8F2231FCADF9700899EA9 /* YQLabel */,
 				55E8F2381FCADF9800899EA9 /* YQLabelTests */,
 				55E8F2431FCADF9800899EA9 /* YQLabelUITests */,
+				551E19A51FCC50B300C7F046 /* YQLabelFramework */,
 				55E8F2221FCADF9700899EA9 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +139,7 @@
 				55E8F2211FCADF9700899EA9 /* YQLabel.app */,
 				55E8F2351FCADF9800899EA9 /* YQLabelTests.xctest */,
 				55E8F2401FCADF9800899EA9 /* YQLabelUITests.xctest */,
+				551E19A41FCC50B300C7F046 /* YQLabel.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,9 +175,46 @@
 			path = YQLabelUITests;
 			sourceTree = "<group>";
 		};
+		55E8F2521FCADFE700899EA9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				55E8F2531FCAE02200899EA9 /* YQLabel.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		551E19A11FCC50B300C7F046 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				551E19A81FCC50B300C7F046 /* YQLabelFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		551E19A31FCC50B300C7F046 /* YQLabelFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 551E19AD1FCC50B300C7F046 /* Build configuration list for PBXNativeTarget "YQLabelFramework" */;
+			buildPhases = (
+				551E199F1FCC50B300C7F046 /* Sources */,
+				551E19A01FCC50B300C7F046 /* Frameworks */,
+				551E19A11FCC50B300C7F046 /* Headers */,
+				551E19A21FCC50B300C7F046 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = YQLabelFramework;
+			productName = YQLabelFramework;
+			productReference = 551E19A41FCC50B300C7F046 /* YQLabel.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		55E8F2201FCADF9700899EA9 /* YQLabel */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55E8F2491FCADF9800899EA9 /* Build configuration list for PBXNativeTarget "YQLabel" */;
@@ -135,10 +222,12 @@
 				55E8F21D1FCADF9700899EA9 /* Sources */,
 				55E8F21E1FCADF9700899EA9 /* Frameworks */,
 				55E8F21F1FCADF9700899EA9 /* Resources */,
+				551E19B01FCC50B300C7F046 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				551E19AA1FCC50B300C7F046 /* PBXTargetDependency */,
 			);
 			name = YQLabel;
 			productName = YQLabel;
@@ -191,6 +280,10 @@
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "王叶庆";
 				TargetAttributes = {
+					551E19A31FCC50B300C7F046 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
 					55E8F2201FCADF9700899EA9 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -223,11 +316,19 @@
 				55E8F2201FCADF9700899EA9 /* YQLabel */,
 				55E8F2341FCADF9800899EA9 /* YQLabelTests */,
 				55E8F23F1FCADF9800899EA9 /* YQLabelUITests */,
+				551E19A31FCC50B300C7F046 /* YQLabelFramework */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		551E19A21FCC50B300C7F046 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55E8F21F1FCADF9700899EA9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,11 +356,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		551E199F1FCC50B300C7F046 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				551E19B11FCC52CA00C7F046 /* YQLabel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55E8F21D1FCADF9700899EA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				55E8F2271FCADF9700899EA9 /* ViewController.swift in Sources */,
+				55E8F2541FCAE02200899EA9 /* YQLabel.swift in Sources */,
 				55E8F2251FCADF9700899EA9 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +393,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		551E19AA1FCC50B300C7F046 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 551E19A31FCC50B300C7F046 /* YQLabelFramework */;
+			targetProxy = 551E19A91FCC50B300C7F046 /* PBXContainerItemProxy */;
+		};
 		55E8F2371FCADF9800899EA9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55E8F2201FCADF9700899EA9 /* YQLabel */;
@@ -315,6 +430,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		551E19AE1FCC50B300C7F046 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = UDA25TAW46;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = YQLabelFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wyq.YQLabelFramework;
+				PRODUCT_MODULE_NAME = YQLabel;
+				PRODUCT_NAME = YQLabel;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		551E19AF1FCC50B300C7F046 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = UDA25TAW46;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = YQLabelFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wyq.YQLabelFramework;
+				PRODUCT_MODULE_NAME = YQLabel;
+				PRODUCT_NAME = YQLabel;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		55E8F2471FCADF9800899EA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -425,8 +590,10 @@
 		55E8F24A1FCADF9800899EA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UDA25TAW46;
 				INFOPLIST_FILE = YQLabel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wyq.YQLabel;
@@ -439,8 +606,10 @@
 		55E8F24B1FCADF9800899EA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UDA25TAW46;
 				INFOPLIST_FILE = YQLabel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wyq.YQLabel;
@@ -456,6 +625,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UDA25TAW46;
 				INFOPLIST_FILE = YQLabelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wyq.YQLabelTests;
@@ -472,6 +642,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UDA25TAW46;
 				INFOPLIST_FILE = YQLabelTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wyq.YQLabelTests;
@@ -515,6 +686,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		551E19AD1FCC50B300C7F046 /* Build configuration list for PBXNativeTarget "YQLabelFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				551E19AE1FCC50B300C7F046 /* Debug */,
+				551E19AF1FCC50B300C7F046 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55E8F21C1FCADF9700899EA9 /* Build configuration list for PBXProject "YQLabel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
