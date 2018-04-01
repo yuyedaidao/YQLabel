@@ -14,30 +14,30 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-        self.label.add(text: "洪七公", color: UIColor.blue)
-        self.label.add(text: "回复", color: UIColor.red)
-        self.label.add(text: "欧阳康", color: UIColor.green,  clickHandler: {(text, tag) in
-            print("点击了 \(text)")
-        })
+//        self.label.add(text: "洪七公", color: UIColor.blue)
+//        self.label.add(text: "回复", color: UIColor.red)
+//        self.label.add(text: "欧阳康", color: UIColor.green,  clickHandler: {(text, tag) in
+//            print("点击了 \(text)")
+//        })
 //        self.label.add(text: "死鬼 死鬼 死鬼 哦哈哈哈 😂 A bc 哦哈哈哈 😂 A bc")
 //        self.label.add(text: "点我😂😂", clickHandler: {(text, tag) -> Void in
 //            print("点的我好爽啊")
 //        })
-        self.label.add(text: "😂😂", clickHandler: {(text, tag) -> Void in
+//        self.label.add(text: "😂😂", clickHandler: {(text, tag) -> Void in
+//            print("点的我好爽啊")
+//        })
+//        self.label.add(text: "我有葵花宝典你想练吗", color: UIColor.red, clickHandler: {(text, tag) -> Void in
+//            print(text)
+//        })
+        self.label.add(text: " 😂😂w我", clickHandler: {(text, tag) -> Void in
             print("点的我好爽啊")
         })
-        self.label.add(text: "我有葵花宝典你想练吗", color: UIColor.red, clickHandler: {(text, tag) -> Void in
-            print(text)
-        })
-        self.label.add(text: "😂😂", clickHandler: {(text, tag) -> Void in
-            print("点的我好爽啊")
-        })
-        self.label.add(text: "九阴真经", color: UIColor.red, clickHandler: {(text, tag) -> Void in
-            print(text)
-        })
-        self.label.add(text: "我有葵花宝典你想练吗", color: UIColor.red, clickHandler: {(text, tag) -> Void in
-            print(text)
-        })
+//        self.label.add(text: "九阴真经", color: UIColor.red, clickHandler: {(text, tag) -> Void in
+//            print(text)
+//        })
+//        self.label.add(text: "我有葵花宝典你想练吗", color: UIColor.red, clickHandler: {(text, tag) -> Void in
+//            print(text)
+//        })
 //        self.label.add(text: "《XX授权书》", tag: 33, color: UIColor.gray) { (text, tag) in
 //            print("点击了 \(text)  \(tag)")
 //        }

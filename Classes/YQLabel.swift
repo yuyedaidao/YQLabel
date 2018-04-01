@@ -143,16 +143,25 @@ public class YQLabel: UIView {
             context.textPosition = CGPoint(x: lineOrigin.x, y: originY)
             CTLineDraw(line, context)
             for run in runs {
-
+                debugPrint(CTRunGetAttributes(run))
                 let range = CTRunGetStringRange(run)
                 let paragraphs = incluedParagraphs(start: textIndex, in: range)
                 for paragraph in paragraphs {
                     let start = max(paragraph.location, range.location)
                     let end = min(paragraph.range().upperBound, range.location + range.length)
                     let x = CTLineGetOffsetForStringIndex(line, start, nil)
-                    let width = CGFloat(CTRunGetTypographicBounds(run, CFRangeMake(max(0, start - range.location), end - start), nil, nil, nil))
+                    let location = max(0, start - range.location)
+                    let length = end - start
+                    let width = CGFloat(CTRunGetTypographicBounds(run, CFRangeMake(location, length), nil, nil, nil))
                     let runRect = CGRect(x: lineOrigin.x + x, y: CGFloat(i) * lineHeight, width: width, height: lineHeight)
                     rects[YQRect(value: runRect)] = paragraph
+                    #if DEBUG
+                    print("~~~~~~~")
+                    print("range(\(start)-\(end)) 计算宽时range(\(location),\(length))")
+                    print(drawText!.string[drawText!.string.index(drawText!.string.startIndex, offsetBy: start) ..< drawText!.string.index(drawText!.string.startIndex, offsetBy: end)])
+                    print(runRect)
+                    print("-------")
+                    #endif
                 }
                 if let last = paragraphs.last {
                     if last.range().upperBound > range.upperBound {
@@ -165,13 +174,6 @@ public class YQLabel: UIView {
             }
         }
         self.rects = rects
-        for (key,value) in rects {
-            print("key ====")
-            print(key)
-            print("value ====")
-            print(value)
-            print("~~~~~~~~~~")
-        }
     }
 
     
@@ -182,7 +184,9 @@ public class YQLabel: UIView {
     ///   - range: run的range
     /// - Returns: [StringParagraph]
     public func incluedParagraphs(start index: Int, in range: CFRange) -> [StringParagraph] {
+        #if DEBUG
         print("start \(index) range \(range)")
+        #endif
         var result = [StringParagraph]()
         var step = index
         while step < texts.count {
