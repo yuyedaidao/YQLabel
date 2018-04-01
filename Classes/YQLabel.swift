@@ -10,8 +10,8 @@ import UIKit
 
 public typealias YQTextClickHandler =  (String, Int) -> Void
 
-struct StringParagraph: Equatable {
-    static func ==(lhs: StringParagraph, rhs: StringParagraph) -> Bool {
+public struct StringParagraph: Equatable {
+    public static func ==(lhs: StringParagraph, rhs: StringParagraph) -> Bool {
         return lhs.location == rhs.location && lhs.text == rhs.text && lhs.tag == rhs.tag
     }
     
@@ -25,15 +25,15 @@ struct StringParagraph: Equatable {
     }
 }
 
-struct YQRect: Hashable {
+public struct YQRect: Hashable {
     
-    static func ==(lhs: YQRect, rhs: YQRect) -> Bool {
+    public static func ==(lhs: YQRect, rhs: YQRect) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
     
     let value: CGRect
     
-    var hashValue: Int {
+    public var hashValue: Int {
         var hash =  0
         hash = hash ^ value.origin.x.hashValue
         hash = hash ^ value.origin.y.hashValue
@@ -62,6 +62,7 @@ public class YQLabel: UIView {
     fileprivate var touchedParagraph: StringParagraph?
     fileprivate var touchedDate: Date!
     fileprivate var texts: [StringParagraph] = []
+    fileprivate var ctFrame: CTFrame?
     
     fileprivate var drawText: NSAttributedString? {
         var text = texts.reduce(NSMutableAttributedString()) { (result, paragraph) -> NSMutableAttributedString in
@@ -86,7 +87,7 @@ public class YQLabel: UIView {
         return text
     }
     
-    fileprivate var rects: [YQRect : Int] = [:]
+    fileprivate var rects: [YQRect : StringParagraph] = [:]
     
     public func add(text: String, tag: Int = Int.max, color: UIColor? = nil, clickHandler: YQTextClickHandler? = nil) {
         var location: Int = 0
@@ -122,20 +123,19 @@ public class YQLabel: UIView {
         path.addRect(assumeRect)
         let framesetter = CTFramesetterCreateWithAttributedString(attributedText)
         let frame = CTFramesetterCreateFrame(framesetter, CFRange(location: 0, length: 0), path, nil)
+        self.ctFrame = frame
         let lines = CTFrameGetLines(frame) as! Array<CTLine>
         var lineOrigins: [CGPoint] = [CGPoint](repeating: CGPoint.zero, count: lines.count)
         CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), &lineOrigins)
-        
         var originY: CGFloat = 0
         let lineHeight = font.lineHeight + lineSpace
         
-        var rects: [YQRect : Int] = [:]
-        
+        var rects: [YQRect : StringParagraph] = [:]
+        var textIndex = 0
         for (i, line) in lines.enumerated() {
             var lineAscent = CGFloat()
             var lineDescent = CGFloat()
             var lineLeading = CGFloat()
-            
             CTLineGetTypographicBounds(line, &lineAscent, &lineDescent, &lineLeading)
             let runs = CTLineGetGlyphRuns(line) as! Array<CTRun>
             let lineOrigin = lineOrigins[i]
@@ -143,15 +143,76 @@ public class YQLabel: UIView {
             context.textPosition = CGPoint(x: lineOrigin.x, y: originY)
             CTLineDraw(line, context)
             for run in runs {
-                let width = CGFloat(CTRunGetTypographicBounds(run, CFRangeMake(0,0), nil, nil, nil))
-                let location = CTRunGetStringRange(run).location
-                let runRect = CGRect(x: lineOrigin.x + CTLineGetOffsetForStringIndex(line,location, nil), y: CGFloat(i) * lineHeight, width: width, height: lineHeight)
-                rects[YQRect(value: runRect)] = location
+
+                let range = CTRunGetStringRange(run)
+                let paragraphs = incluedParagraphs(start: textIndex, in: range)
+                for paragraph in paragraphs {
+                    let start = max(paragraph.location, range.location)
+                    let end = min(paragraph.range().upperBound, range.location + range.length)
+                    let x = CTLineGetOffsetForStringIndex(line, start, nil)
+                    let width = CGFloat(CTRunGetTypographicBounds(run, CFRangeMake(max(0, start - range.location), end - start), nil, nil, nil))
+                    let runRect = CGRect(x: lineOrigin.x + x, y: CGFloat(i) * lineHeight, width: width, height: lineHeight)
+                    rects[YQRect(value: runRect)] = paragraph
+                }
+                if let last = paragraphs.last {
+                    if last.range().upperBound > range.upperBound {
+                        textIndex += max(0, paragraphs.count - 1)
+                    } else {
+                        textIndex += paragraphs.count
+                    }
+                }
+                
             }
         }
         self.rects = rects
+        for (key,value) in rects {
+            print("key ====")
+            print(key)
+            print("value ====")
+            print(value)
+            print("~~~~~~~~~~")
+        }
     }
 
+    
+    /// 获取有交集的StringParagraph
+    ///
+    /// - Parameters:
+    ///   - index: 起始索引
+    ///   - range: run的range
+    /// - Returns: [StringParagraph]
+    public func incluedParagraphs(start index: Int, in range: CFRange) -> [StringParagraph] {
+        print("start \(index) range \(range)")
+        var result = [StringParagraph]()
+        var step = index
+        while step < texts.count {
+            let paragraph = texts[step]
+            if paragraph.location >= range.upperBound {
+                return result
+            } else if paragraph.range().upperBound <= range.location {
+                step += 1
+            } else {
+                if paragraph.location >= range.location {
+                    if paragraph.range().upperBound < range.upperBound {
+                        result.append(paragraph)
+                        step += 1
+                    } else {
+                        result.append(paragraph)
+                        return result
+                    }
+                } else {
+                    if paragraph.range().upperBound < range.upperBound {
+                        result.append(paragraph)
+                        step += 1
+                    } else {
+                        result.append(paragraph)
+                        return result
+                    }
+                }
+            }
+        }
+        return result
+    }
     
     override public var intrinsicContentSize: CGSize {
         guard  let text = drawText else {
@@ -179,18 +240,15 @@ extension YQLabel {
         let point = touch.location(in: self)
         for item in rects {
             if item.key.value.contains(point) {
-                let touchLocation = item.value
-                for paragraph in texts {
-                    if paragraph.clickHandler != nil && paragraph.range().contains(touchLocation) {
-                        touchedParagraph = paragraph
-                        setNeedsDisplay()
-                        break
-                    }
+                if item.value.clickHandler != nil {
+                    touchedParagraph = item.value
+                    setNeedsDisplay()
                 }
-                break
             }
         }
     }
+    
+    
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         defer {
@@ -224,5 +282,11 @@ extension NSAttributedString {
         return size
     }
 
+}
+
+extension CFRange {
+    var upperBound: Int {
+        return location + length
+    }
 }
 

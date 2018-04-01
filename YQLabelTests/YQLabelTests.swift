@@ -10,7 +10,7 @@ import XCTest
 @testable import YQLabel
 
 class YQLabelTests: XCTestCase {
-    
+    let label = YQLabel(frame: CGRect(x: 0, y: 0, width: 232, height: 128))
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -52,5 +52,40 @@ class YQLabelTests: XCTestCase {
     
     func testHash() {
         XCTAssertNotEqual(CGFloat(0.3).hashValue, 0)
+    }
+    
+    func testIncludedParagraphs() {
+        
+        self.label.add(text: "洪七公", color: UIColor.blue)
+        self.label.add(text: "回复", color: UIColor.red)
+        self.label.add(text: "欧阳康", color: UIColor.green,  clickHandler: {(text, tag) in
+            print("点击了 \(text)")
+        })
+        self.label.add(text: "我有葵花宝典你想练吗", color: UIColor.red, clickHandler: {(text, tag) -> Void in
+            print(text)
+        })
+        self.label.add(text: "九阴真经", color: UIColor.red, clickHandler: {(text, tag) -> Void in
+            print(text)
+        })
+  
+        self.label.flash()
+        let array1 = self.label.incluedParagraphs(start: 0, in: CFRangeMake(0, 9))
+        
+        XCTAssertNotNil(array1)
+        XCTAssertTrue(array1.count == 4)
+        
+        let array2 = self.label.incluedParagraphs(start: 0, in: CFRangeMake(0, 2))
+        XCTAssertNotNil(array2)
+        XCTAssertTrue(array2.count == 1)
+        
+        let array3 = self.label.incluedParagraphs(start: 0, in: CFRangeMake(0, 4))
+        XCTAssertNotNil(array3)
+        XCTAssertTrue(array3.count == 2)
+        
+    }
+    
+    
+    func testFaceLength() {
+        XCTAssertTrue("😂😂".count == 2, "表情符号的长度啊")
     }
 }

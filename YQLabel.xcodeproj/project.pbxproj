@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55001E352070C39700142A83 /* YQLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8F2531FCAE02200899EA9 /* YQLabel.swift */; };
 		551E19A81FCC50B300C7F046 /* YQLabelFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 551E19A61FCC50B300C7F046 /* YQLabelFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		551E19AB1FCC50B300C7F046 /* YQLabel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551E19A41FCC50B300C7F046 /* YQLabel.framework */; };
 		551E19AC1FCC50B300C7F046 /* YQLabel.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551E19A41FCC50B300C7F046 /* YQLabel.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -378,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55001E352070C39700142A83 /* YQLabel.swift in Sources */,
 				55E8F23A1FCADF9800899EA9 /* YQLabelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +597,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UDA25TAW46;
 				INFOPLIST_FILE = YQLabel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wyq.YQLabel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,6 +614,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UDA25TAW46;
 				INFOPLIST_FILE = YQLabel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.wyq.YQLabel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
