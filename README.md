@@ -27,3 +27,6 @@ label.add(text: "点我😂😂", clickHandler: {(text, tag) -> Void in
 })
 label.flash()
 ```
+
+## TODO
++ [ ] 处理带emoji的文本出现点击出现错落的问题
