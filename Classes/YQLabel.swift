@@ -21,7 +21,10 @@ public struct StringParagraph: Equatable {
     let clickHandler: YQTextClickHandler?
     let location: Int
     func range() -> Range<Int> {
-        return location ..< (location + text.count)
+        #if DDEBUG
+        print("\(text)  count: \(text.unicodeScalars.count)")
+        #endif
+        return location ..< (location + text.unicodeScalars.count)
     }
 }
 
@@ -107,6 +110,7 @@ public class YQLabel: UIView {
         setNeedsDisplay()
     }
 
+    /// ** CTRunGetTypographicBounds 在位置是emoji时返回的宽度是0,导致点击不准确 **
     override public func draw(_ rect: CGRect) {
         
         let context = UIGraphicsGetCurrentContext()!
@@ -143,7 +147,6 @@ public class YQLabel: UIView {
             context.textPosition = CGPoint(x: lineOrigin.x, y: originY)
             CTLineDraw(line, context)
             for run in runs {
-                debugPrint(CTRunGetAttributes(run))
                 let range = CTRunGetStringRange(run)
                 let paragraphs = incluedParagraphs(start: textIndex, in: range)
                 for paragraph in paragraphs {
@@ -152,13 +155,17 @@ public class YQLabel: UIView {
                     let x = CTLineGetOffsetForStringIndex(line, start, nil)
                     let location = max(0, start - range.location)
                     let length = end - start
+                    if (length == 0) {
+                        print("我的长度是0")
+                    }
                     let width = CGFloat(CTRunGetTypographicBounds(run, CFRangeMake(location, length), nil, nil, nil))
                     let runRect = CGRect(x: lineOrigin.x + x, y: CGFloat(i) * lineHeight, width: width, height: lineHeight)
                     rects[YQRect(value: runRect)] = paragraph
                     #if DEBUG
                     print("~~~~~~~")
-                    print("range(\(start)-\(end)) 计算宽时range(\(location),\(length))")
                     print(drawText!.string[drawText!.string.index(drawText!.string.startIndex, offsetBy: start) ..< drawText!.string.index(drawText!.string.startIndex, offsetBy: end)])
+                    print("range(\(start)-\(end)) 计算宽时range(\(location),\(length))")
+                    
                     print(runRect)
                     print("-------")
                     #endif
@@ -184,7 +191,7 @@ public class YQLabel: UIView {
     ///   - range: run的range
     /// - Returns: [StringParagraph]
     public func incluedParagraphs(start index: Int, in range: CFRange) -> [StringParagraph] {
-        #if DEBUG
+        #if DDEBUG
         print("start \(index) range \(range)")
         #endif
         var result = [StringParagraph]()
