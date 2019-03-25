@@ -155,13 +155,21 @@ public class YQLabel: UIView {
                     let x = CTLineGetOffsetForStringIndex(line, start, nil)
                     let location = max(0, start - range.location)
                     let length = end - start
-                    if (length == 0) {
-                        print("我的长度是0")
-                    }
+//                    let string = attributedText.string
+//                    let range = Range(NSRange(location: location, length: length), in: string)!
+//                    print(range)
+//                    let target = String(string[Range(NSRange(location: location, length: length), in: string)!])
+//                    if target.isEmoji {
+//                        print("我是emoji:")
+//                        print(target)
+//                    } else {
+//                        print("我不是emoji:")
+//                        print(target)
+//                    }
                     let width = CGFloat(CTRunGetTypographicBounds(run, CFRangeMake(location, length), nil, nil, nil))
                     let runRect = CGRect(x: lineOrigin.x + x, y: CGFloat(i) * lineHeight, width: width, height: lineHeight)
                     rects[YQRect(value: runRect)] = paragraph
-                    #if DEBUG
+                    #if DDEBUG
                     print("~~~~~~~")
                     print(drawText!.string[drawText!.string.index(drawText!.string.startIndex, offsetBy: start) ..< drawText!.string.index(drawText!.string.startIndex, offsetBy: end)])
                     print("range(\(start)-\(end)) 计算宽时range(\(location),\(length))")
@@ -301,3 +309,22 @@ extension CFRange {
     }
 }
 
+extension String {
+    var isEmoji: Bool {
+        for scalar in unicodeScalars {
+            switch scalar.value {
+            case 0x1F600...0x1F64F, // Emoticons
+            0x1F300...0x1F5FF, // Misc Symbols and Pictographs
+            0x1F680...0x1F6FF, // Transport and Map
+            0x2600...0x26FF,   // Misc symbols
+            0x2700...0x27BF,   // Dingbats
+            0xFE00...0xFE0F,   // Variation Selectors
+            0x1F900...0x1F9FF:  // Supplemental Symbols and Pictographs
+                continue
+            default:
+                return false
+            }
+        }
+        return true
+    }
+}
