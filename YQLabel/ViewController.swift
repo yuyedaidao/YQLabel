@@ -26,24 +26,24 @@ class ViewController: UIViewController {
 //        self.label.add(text: "😂😂", clickHandler: {(text, tag) -> Void in
 //            print("点的我好爽啊")
 //        })
-//        self.label.add(text: "我有葵花宝典你想练吗", color: UIColor.red, clickHandler: {(text, tag) -> Void in
-//            print(text)
-//        })
-        self.label.add(text: " 😂😂w我", clickHandler: {(text, tag) -> Void in
+        self.label.add(text: "我有葵花宝典你想练吗", color: UIColor.red, clickHandler: {(text, tag) -> Void in
+            print(text)
+        })
+        self.label.add(text: "😂\u{200B}😂\u{200B}", color: UIColor.green ,clickHandler: {(text, tag) -> Void in
             print("点的我好爽啊")
         })
-//        self.label.add(text: "九阴真经", color: UIColor.red, clickHandler: {(text, tag) -> Void in
-//            print(text)
-//        })
+        self.label.add(text: "九阴真经", color: UIColor.red, clickHandler: {(text, tag) -> Void in
+            print(text)
+        })
 //        self.label.add(text: "我有葵花宝典你想练吗", color: UIColor.red, clickHandler: {(text, tag) -> Void in
 //            print(text)
 //        })
-//        self.label.add(text: "《XX授权书》", tag: 33, color: UIColor.gray) { (text, tag) in
-//            print("点击了 \(text)  \(tag)")
-//        }
-//        self.label.add(text: "《XXX授权书》", tag: 33, color: UIColor.gray) { (text, tag) in
-//            print("点击了 \(text)  \(tag)")
-//        }
+        self.label.add(text: "《XX授权书》", tag: 33, color: UIColor.gray) { (text, tag) in
+            print("点击了 \(text)  \(tag)")
+        }
+        self.label.add(text: "《XXX授权书》", tag: 34, color: UIColor.gray) { (text, tag) in
+            print("点击了 \(text)  \(tag)")
+        }
         self.label.flash()
 
        

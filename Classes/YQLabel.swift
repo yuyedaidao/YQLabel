@@ -33,14 +33,13 @@ public struct YQRect: Hashable {
     
     let value: CGRect
     
-    public var hashValue: Int {
-        var hash =  0
-        hash = hash ^ value.origin.x.hashValue
-        hash = hash ^ value.origin.y.hashValue
-        hash = hash ^ value.width.hashValue
-        hash = hash ^ value.height.hashValue
-        return hash
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(value.origin.x)
+        hasher.combine(value.origin.y)
+        hasher.combine(value.size.width)
+        hasher.combine(value.size.height)
     }
+    
 }
 
 @IBDesignable
@@ -73,7 +72,7 @@ public class YQLabel: UIView {
                 attributes[NSAttributedStringKey.foregroundColor] = textColor
             }
             if let touchedParagraph = self.touchedParagraph {
-                if isTouching && nil != paragraph.clickHandler && touchedParagraph == paragraph{
+                if isTouching && nil != paragraph.clickHandler && touchedParagraph == paragraph {
                     attributes[NSAttributedStringKey.backgroundColor] = highlightedColor
                 }
             }
@@ -143,7 +142,9 @@ public class YQLabel: UIView {
             context.textPosition = CGPoint(x: lineOrigin.x, y: originY)
             CTLineDraw(line, context)
             for run in runs {
+#if DEBUG1
                 debugPrint(CTRunGetAttributes(run))
+#endif
                 let range = CTRunGetStringRange(run)
                 let paragraphs = incluedParagraphs(start: textIndex, in: range)
                 for paragraph in paragraphs {
@@ -184,7 +185,7 @@ public class YQLabel: UIView {
     ///   - range: run的range
     /// - Returns: [StringParagraph]
     public func incluedParagraphs(start index: Int, in range: CFRange) -> [StringParagraph] {
-        #if DEBUG
+        #if DEBUG1
         print("start \(index) range \(range)")
         #endif
         var result = [StringParagraph]()
